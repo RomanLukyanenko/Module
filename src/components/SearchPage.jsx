@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { apiCatalog, apiSearch } from '../urls/Api'
-import { ProductCard } from './ProductCard';
+import { apiCatalog, apiSearch } from '../api/Api'
+import { ProductCard } from './products/ProductCard';
 import { FormatPrice } from '../util/FormatPrice';
 
 export const SearchPage = () => {

@@ -5,11 +5,11 @@ import {
   increaseItemCount,
   decreaseItemCount,
   changeCartVisibility
-} from '../store/CartSlice';
-import CartNoResult from '../components/CartNoResult';
-import CartItem from '../components/CartItem';
-import CartButton from '../components/CartButton';
-import config from '../store/config'; // Перевірте правильність шляху
+} from '../../store/CartSlice';
+import CartNoResult from './CartNoResult';
+import CartItem from './CartItem';
+import CartButton from './CartButton';
+import config from '../../store/config'; // Перевірте правильність шляху
 
 export const Cart = () => {
   const dispatch = useDispatch();

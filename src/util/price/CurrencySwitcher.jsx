@@ -1,6 +1,8 @@
 export const CurrencySwitcher = ({ onCurrencyChange, currentCurrency }) => {
   return (
+    // Блок для перемикання валют
     <div>
+      {/* // Кнопка для вибору долара США (USD) як поточної валюти */}
       <button
         className={`currency-switcher-button ${
           currentCurrency === "USD" ? "selected" : ""
@@ -9,6 +11,7 @@ export const CurrencySwitcher = ({ onCurrencyChange, currentCurrency }) => {
       >
         USD
       </button>
+      {/* // Кнопка для вибору євро (EUR) як поточної валюти */}
       <button
         className={`currency-switcher-button ${
           currentCurrency === "EUR" ? "selected" : ""
@@ -17,6 +20,7 @@ export const CurrencySwitcher = ({ onCurrencyChange, currentCurrency }) => {
       >
         EUR
       </button>
+      {/* // Кнопка для вибору української гривні (UAH) як поточної валюти */}
       <button
         className={`currency-switcher-button ${
           currentCurrency === "UAH" ? "selected" : ""
@@ -28,4 +32,3 @@ export const CurrencySwitcher = ({ onCurrencyChange, currentCurrency }) => {
     </div>
   );
 };
-

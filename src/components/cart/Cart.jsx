@@ -5,20 +5,20 @@ import {
   increaseItemCount,
   decreaseItemCount,
   changeCartVisibility,
-} from "../../store/CartSlice";
-import { CartNoResult } from "./CartNoResult";
-import { CartItem } from "./CartItem";
-import { CartButton } from "./CartButton";
-import config from "../../store/config"; // Перевірте правильність шляху
+} from "../../store/CartSlice"; // Імпорт функцій Redux для управління станом кошика
+import { CartNoResult } from "./CartNoResult"; // Компонент для відображення повідомлення про порожній кошик
+import { CartItem } from "./CartItem"; // Компонент для відображення товару у кошику
+import { CartButton } from "./CartButton"; // Кнопка кошика
+import config from "../../store/config"; // Імпорт конфігурації (перевірте правильність шляху)
 
 export const Cart = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Використання хука для диспетчеризації дій Redux
 
-  // Отримання даних корзини з Redux store
+  // Отримання даних кошика з Redux store
   const { cart, cartVisibility } = useSelector((state) => state.cart);
-  const cartCount = cart.length;
+  const cartCount = cart.length; // Визначення кількості товарів у кошику
 
-  // Видалення товару з корзини
+  // Видалення товару з кошика
   const delCartProduct = useCallback(
     (productId) => {
       dispatch(removeFromCart({ id: productId }));
@@ -26,7 +26,7 @@ export const Cart = () => {
     [dispatch],
   );
 
-  // Додавання кількості товарів
+  // Збільшення кількості товару в кошику
   const setItemCountPlus = useCallback(
     (productId) => {
       dispatch(increaseItemCount({ id: productId }));
@@ -34,7 +34,7 @@ export const Cart = () => {
     [dispatch],
   );
 
-  // Зменшення кількості товарів
+  // Зменшення кількості товару в кошику
   const setItemCountMinus = useCallback(
     (productId) => {
       dispatch(decreaseItemCount({ id: productId }));
@@ -42,20 +42,23 @@ export const Cart = () => {
     [dispatch],
   );
 
-  // Перемикач видимості корзини
+  // Перемикання видимості кошика
   const toggleCart = useCallback(() => {
     dispatch(changeCartVisibility());
   }, [dispatch]);
 
   return (
     <div className="cart-added-list">
+      {/* // Кнопка для управління видимістю кошика */}
       <CartButton cartCount={cartCount} toggleCart={toggleCart} />
       <div
         className={`cart-added-list__item-list ${cartVisibility ? "show" : ""}`}
       >
         {cart.length === 0 ? (
+          // Відображення повідомлення, якщо кошик порожній
           <CartNoResult />
         ) : (
+          // Відображення списку товарів у кошику
           cart.map((product) => (
             <CartItem
               key={product.id}

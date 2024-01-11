@@ -1,3 +1,7 @@
 export const EmptyCartMessage = () => {
-  return <h1 className="form-empty">Корзина пуста</h1>;
+  return (
+    // Відображення повідомлення про порожній стан кошика
+    <h1 className="form-empty">Корзина пуста</h1> // Текст повідомлення
+  );
 };
+

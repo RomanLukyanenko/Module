@@ -1,3 +1,4 @@
+// Імпортування необхідних інструментів з Redux Toolkit та Redux Persist
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import {
   persistStore,
@@ -9,40 +10,38 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storage from "redux-persist/lib/storage"; // Використання локального сховища як місця зберігання
 
-// Частина нашої корзини
-import cartReducer from "./CartSlice";
+import cartReducer from "./CartSlice"; // Імпорт reducer'а для кошика
 
-// Оприділили де будемо все зберігати
+// Конфігурація для Redux Persist, щоб зберегти конкретні частини стану
 const persistConfig = {
-  key: "root",
-  storage,
-  whitelist: ["cart"], // Дозволяти
-  blacklist: ["catalog"], // Блокувати
+  key: "root", // Ключ на рівні кореня держави
+  storage, // Вказуємо, що використовувати локальне сховище
+  whitelist: ["cart"], // Частини стану, які потрібно зберігати
+  blacklist: ["catalog"], // Частини стану, які не потрібно зберігати
 };
 
-// Об'єднуємо всі редюсори
+// Комбінування редюсерів в один кореневий редюсер
 const rootReducer = combineReducers({
-  cart: cartReducer,
+  cart: cartReducer, // Додаємо cartReducer до кореневого редюсера
 });
 
-// Персістований варіант редюсорів, при кожній зміні сховища persist буде це бачити
+// Створюємо постійний редюсер, який обгортає кореневий редюсер
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Оновлене сховище, яке працює з localstorage
+// Конфігурація самого магазину Redux
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: persistedReducer, // Використання постійного редюсера
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
+        // Ігнорування певних дій для перевірки серіалізації
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });
 
-// Обгортка сховище. Росказуємо про нашу структуру сховища
-export const persistor = persistStore(store);
+export const persistor = persistStore(store); // Створення персистора, щоб забезпечити постійність даних
 
-// Повертаємо сховище
-export default store;
+export default store; // Експорт конфігурованого магазину

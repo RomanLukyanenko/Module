@@ -1,74 +1,83 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Створення slice для кошика з використанням Redux Toolkit
 const cartSlice = createSlice({
-  name: "cart",
+  name: "cart", // Назва slice, яка буде використовуватися в Redux store
   initialState: {
-    cart: [],
-    cartVisibility: false,
+    cart: [], // Початковий стан кошика, який є пустим масивом
+    cartVisibility: false, // Початковий стан видимості кошика, спочатку він не видимий
   },
   reducers: {
+    // Дія для додавання товару в кошик
     addToCart(state, action) {
-      // Формуємо дані товару
-      const product = action.payload;
+      const product = action.payload; // Отримання товару з action
 
-      // Шукаємо товар для захисту від дублікату
+      // Перевірка, чи товар вже існує у кошику
       const productExistKey = state.cart.findIndex(
         (item) => item.id === product.id,
       );
 
-      // Добавляємо товар до масиву або кількість в товарі, якщо він є
+      // Якщо товар існує, збільшити його кількість, інакше додати новий товар
       if (productExistKey !== -1) {
-        // Якщо товар вже є в корзині, збільшуємо кількість
         state.cart[productExistKey].count++;
       } else {
-        // Якщо товару немає в корзині, додаємо його з кількістю 1
         state.cart.push({ ...product, count: 1 });
       }
     },
+
+    // Дія для видалення товару з кошика
     removeFromCart(state, action) {
-      const productId = action.payload.id;
+      const productId = action.payload.id; // Отримання ID товару
       const productIndex = state.cart.findIndex(
         (item) => item.id === productId,
       );
+
+      // Якщо товар знайдено, зменшити його кількість або видалити з кошика
       if (productIndex !== -1) {
         if (state.cart[productIndex].count > 1) {
           state.cart[productIndex].count--;
         } else {
-          state.cart.splice(productIndex, 1); // видалення товару, якщо його кількість 0
+          state.cart.splice(productIndex, 1);
         }
       }
     },
 
+    // Дія для збільшення кількості товару
     increaseItemCount(state, action) {
-      // Шукаємо товар і добавляємо йому кількість
       state.cart.forEach((item) => {
         if (item.id === action.payload.id) item.count++;
       });
     },
+
+    // Дія для зменшення кількості товару
     decreaseItemCount(state, action) {
       const productIndex = state.cart.findIndex(
         (item) => item.id === action.payload.id,
       );
+
+      // Зменшити кількість або видалити товар з кошика
       if (productIndex !== -1) {
         if (state.cart[productIndex].count > 1) {
           state.cart[productIndex].count--;
         } else {
-          state.cart.splice(productIndex, 1); // Видаляємо товар, якщо його кількість стає 0
+          state.cart.splice(productIndex, 1);
         }
       }
     },
 
+    // Дія для очищення кошика
     cleanCart(state) {
-      // Очищуємо корзину
       state.cart = [];
     },
+
+    // Дія для зміни видимості кошика
     changeCartVisibility(state) {
-      // Змінюємо видість корзини
       state.cartVisibility = !state.cartVisibility;
     },
   },
 });
 
+// Експорт дій з slice для їх використання в компонентах та інших частинах додатку
 export const {
   addToCart,
   removeFromCart,
@@ -78,4 +87,5 @@ export const {
   changeCartVisibility,
 } = cartSlice.actions;
 
-export default cartSlice.reducer;
+export default cartSlice.reducer; // Експорт редюсера для включення його в основний store
+

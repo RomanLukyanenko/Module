@@ -1,14 +1,15 @@
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../store/CartSlice'; // Імпортуйте вашу дію addToCart
+import { addToCart } from '../../store/CartSlice'; // Імпорт функції додавання товару в кошик зі slice кошика
 
 // Компонент ProductCard для відображення інформації про продукт
 export const ProductCard = ({ title, price, oldprice, img, formatPrice, id }) => {
   
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Використання хука useDispatch для доступу до dispatch функції Redux
 
+  // Функція обробки натискання на кнопку "Додати до кошика"
   const handleAddToCart = () => {
-    const product = { id, title, price, img };
-    dispatch(addToCart(product));
+    const product = { id, title, price, img }; // Формування об'єкта продукту
+    dispatch(addToCart(product)); // Відправлення дії addToCart з продуктом до Redux store
   };
 
   return (
@@ -31,7 +32,7 @@ export const ProductCard = ({ title, price, oldprice, img, formatPrice, id }) =>
 
         {/* Кнопка для додавання продукту до кошика */}
         <button className="card-product__add-to-cart" onClick={handleAddToCart}>
-      Додати до кошика
+          Додати до кошика
         </button>
       </div>
     </div>

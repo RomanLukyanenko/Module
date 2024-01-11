@@ -5,7 +5,6 @@ export const NavigationBar = () => {
     <div className="navigation">
       <div className="container">
         <div className="navigation__hold">
-          {/* Ліва частина навігації з React Router Links */}
           <div className="navigation__left navigation__links js-mobile-menu">
             <ul className="menu navigation__item-list">
               <li className="menu__li navigation__item">
@@ -26,14 +25,12 @@ export const NavigationBar = () => {
             </ul>
           </div>
 
-          {/* Центральна частина навігації */}
           <div className="navigation__middle">
             <Link to="/" className="logo">
               I-happy
             </Link>
           </div>
 
-          {/* Права частина навігації */}
           <div className="navigation__right">
             <ul className="navigation__item-list">
               <li className="navigation__item">

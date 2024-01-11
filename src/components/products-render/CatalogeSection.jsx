@@ -8,17 +8,21 @@ import { FormatPrice as formatPriceUtil } from '../../util/price/FormatPrice';
 import { useCurrencyRates } from '../../api/CustomHookExchangerate';
 
 export const Cataloge = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [currentCurrency, setCurrentCurrency] = useState('UAH');
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const currencyData = useCurrencyRates();
+  // Використання useState для створення станів компоненту
+  const [selectedCategory, setSelectedCategory] = useState('all'); // Вибрана категорія
+  const [currentCurrency, setCurrentCurrency] = useState('UAH'); // Поточна валюта
+  const [products, setProducts] = useState([]); // Масив продуктів
+  const [categories, setCategories] = useState([]); // Масив категорій
+  const currencyData = useCurrencyRates(); // Використання кастомного хука для отримання курсів валют
 
+  // Використання кастомного хука для завантаження даних продуктів та категорій
   useFetchData("https://654ca14b77200d6ba8591faa.mockapi.io/catalog", setProducts);
   useFetchData("https://654ca14b77200d6ba8591faa.mockapi.io/category", setCategories);
 
+  // Функція для зміни вибраної категорії
   const handleCategoryChange = (catid) => setSelectedCategory(catid.toString());
 
+  // Функція для форматування ціни з урахуванням поточної валюти
   const formatPrice = (price) => {
     let formattedPrice = price;
     switch (currentCurrency) {
@@ -34,7 +38,7 @@ export const Cataloge = () => {
     return formatPriceUtil(formattedPrice, currentCurrency);
   };
 
-
+  // Фільтрація продуктів відповідно до вибраної категорії
   const filteredProducts = selectedCategory === 'all'
     ? products
     : products.filter(product => product.catid.toString() === selectedCategory);

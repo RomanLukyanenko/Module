@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { CurrencySwitcher } from '../util/price/CurrencySwitcher';
-import { CategorySelector } from '../components/products-render/CategorySelector';
-import { ProductsSummary } from '../components/products-render/ProductsSummary';
-import { ProductList } from '../components/products-render/ProductList';
-import { useFetchData } from '../api/ApiData';
-import { FormatPrice as formatPriceUtil } from '../util/price/FormatPrice';
-import { useCurrencyRates } from '../api/CustomHookExchangerate';
+import { CurrencySwitcher } from '../../util/price/CurrencySwitcher';
+import { CategorySelector } from './CategorySelector';
+import { ProductsSummary } from './ProductsSummary';
+import { ProductList } from './ProductList';
+import { useFetchData } from '../../api/ApiData';
+import { FormatPrice as formatPriceUtil } from '../../util/price/FormatPrice';
+import { useCurrencyRates } from '../../api/CustomHookExchangerate';
 
 export const Cataloge = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');

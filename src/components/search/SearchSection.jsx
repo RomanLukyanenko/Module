@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { apiCatalog, apiSearch } from '../api/ApiData';
-import { FormatPrice } from '../util/price/FormatPrice';
-import { SearchInput } from '../components/search/SearchInput';
-import { ProductSummary } from '../components/search/ProductSummary';
-import { ProductCard } from '../components/products-render/ProductCard';
+import { apiCatalog, apiSearch } from '../../api/ApiData';
+import { FormatPrice } from '../../util/price/FormatPrice';
+import { SearchInput } from './SearchInput';
+import { ProductSummary } from './ProductSummary';
+import { ProductCard } from '../products-render/ProductCard';
 
 export const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');

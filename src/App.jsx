@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { NavigationBar } from './sections/NavigationBar';
-import { Cataloge } from './sections/Cataloge';
+import { Cataloge } from './components/products-render/CatalogeSection';
 import { Contacts } from './sections/Сontacts';
 import { Delivery } from './sections/Delivery';
-import { SearchPage } from './sections/SearchPage';
+import { SearchPage } from './components/search/SearchSection';
 import { Gallary } from './sections/Gallary';
 import { Footer } from './sections/Footer';
 import { Cart }  from './components/cart/Cart';

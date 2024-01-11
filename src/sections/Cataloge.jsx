@@ -3,7 +3,7 @@ import { CurrencySwitcher } from '../util/price/CurrencySwitcher';
 import { CategorySelector } from '../components/products-render/CategorySelector';
 import { ProductsSummary } from '../components/products-render/ProductsSummary';
 import { ProductList } from '../components/products-render/ProductList';
-import { useFetchData } from '../api/Api';
+import { useFetchData } from '../api/ApiData';
 import { FormatPrice as formatPriceUtil } from '../util/price/FormatPrice';
 import { useCurrencyRates } from '../api/CustomHookExchangerate';
 

@@ -3,7 +3,7 @@ import { NavigationBar } from './sections/NavigationBar';
 import { Cataloge } from './sections/Cataloge';
 import { Contacts } from './sections/Сontacts';
 import { Delivery } from './sections/Delivery';
-import { SearchPage } from './components/SearchPage';
+import { SearchPage } from './sections/SearchPage';
 import { Gallary } from './sections/Gallary';
 import { Footer } from './sections/Footer';
 import { Cart }  from './components/cart/Cart';

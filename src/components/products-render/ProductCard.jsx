@@ -3,7 +3,7 @@ import { addToCart } from '../../store/CartSlice'; // Імпортуйте ва�
 
 // Компонент ProductCard для відображення інформації про продукт
 export const ProductCard = ({ title, price, oldprice, img, formatPrice, id }) => {
-
+  
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {

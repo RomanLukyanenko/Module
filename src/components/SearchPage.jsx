@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { apiCatalog, apiSearch } from '../api/Api'
-import { ProductCard } from './products/ProductCard';
-import { FormatPrice } from '../util/FormatPrice';
+import { ProductCard } from './products-render/ProductCard';
+import { FormatPrice } from '../util/price/FormatPrice';
 
 export const SearchPage = () => {
   // Видалено setCurrentCurrency, якщо він не використовується
@@ -67,7 +67,7 @@ export const SearchPage = () => {
   );
 };
 
-const renderProducts = (products, currentCurrency) => {
+const renderProducts = (products, currentCurrency, ) => {
   console.log(products)
   if (products.length === 0) {
     return <h3 className="no-result">Товарів не знайдено</h3>;

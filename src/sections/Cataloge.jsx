@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { CurrencySwitcher } from '../util/CurrencySwitcher';
-import { CategorySelector } from '../components/products/CategorySelector';
-import { ProductsSummary } from '../components/products/ProductsSummary';
-import { ProductList } from '../components/products/ProductList';
+import { CurrencySwitcher } from '../util/price/CurrencySwitcher';
+import { CategorySelector } from '../components/products-render/CategorySelector';
+import { ProductsSummary } from '../components/products-render/ProductsSummary';
+import { ProductList } from '../components/products-render/ProductList';
 import { useFetchData } from '../api/Api';
-import { useCurrencyRates } from '../util/CustomHook';
-import { FormatPrice as formatPriceUtil } from '../util/FormatPrice';
+import { FormatPrice as formatPriceUtil } from '../util/price/FormatPrice';
+import { useCurrencyRates } from '../api/CustomHookExchangerate';
 
 export const Cataloge = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -43,12 +43,14 @@ export const Cataloge = () => {
     <div className="catalog" id="catalog">
       <div className="container">
         <CurrencySwitcher onCurrencyChange={setCurrentCurrency} />
+        <div className="catalog__header">
         <CategorySelector
           categories={categories}
           selectedCategory={selectedCategory}
           onSelectCategory={handleCategoryChange}
         />
         <ProductsSummary count={filteredProducts.length} />
+        </div>
         <ProductList products={filteredProducts} formatPrice={formatPrice} />
       </div>
     </div>

@@ -1,11 +1,24 @@
-export const CurrencySwitcher = ({ onCurrencyChange }) => {
+export const CurrencySwitcher = ({ onCurrencyChange, currentCurrency }) => {
   return (
     <div>
-      <button onClick={() => onCurrencyChange('USD')}>USD</button>
-      <button onClick={() => onCurrencyChange('EUR')}>EUR</button>
-      <button onClick={() => onCurrencyChange('UAH')}>UAH</button>
+      <button 
+        className={`currency-switcher-button ${currentCurrency === 'USD' ? 'selected' : ''}`}
+        onClick={() => onCurrencyChange('USD')}>
+        USD
+      </button>
+      <button 
+        className={`currency-switcher-button ${currentCurrency === 'EUR' ? 'selected' : ''}`}
+        onClick={() => onCurrencyChange('EUR')}>
+        EUR
+      </button>
+      <button 
+        className={`currency-switcher-button ${currentCurrency === 'UAH' ? 'selected' : ''}`}
+        onClick={() => onCurrencyChange('UAH')}>
+        UAH
+      </button>
     </div>
   );
 };
+
 
 

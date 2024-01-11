@@ -456,8 +456,37 @@ svg {
     }
 }
 
+/*
+    Кнопки зміни валюти
+ */
 
+ .currency-switcher-button {
+    padding: 8px 16px;
+    margin: 5px;
+    background-color: #edc205;
+    color: #333;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
 
+.currency-switcher-button:hover {
+    background-color: #e2e2e2;
+    color: #000;
+    border-color: #ccc;
+}
+
+.currency-switcher-button:active {
+    transform: scale(0.95);
+}
+
+.currency-switcher-button.selected {
+    background-color: #1355ed;
+    color: rgb(255, 47, 47);
+    border-color: #4b6cb7;
+}
 
 
 
@@ -549,6 +578,31 @@ svg {
 /**
  * Карточка каталогу
  */
+
+ .card-product__add-to-cart {
+    padding: 5px 10px;
+    background: linear-gradient(45deg, #4b6cb7, #182848);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-product__add-to-cart:hover {
+    background: linear-gradient(45deg, #182848, #4b6cb7);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-product__add-to-cart:active {
+    transform: translateY(1px);
+}
+
 .card-product {
     --link: #000;
     --hover-link: var(--pr);

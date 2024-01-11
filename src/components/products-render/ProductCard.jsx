@@ -15,7 +15,7 @@ export const ProductCard = ({ title, price, oldprice, img, formatPrice, id }) =>
     <div className="card-product">
       {/* Блок з зображенням продукту */}
       <div className="card-product__img-hold">
-        <img src={`./src/assets/catalog/${img}`} alt={title} className="card-product__img" />
+        <img src={`../../../public/catalog/${img}`} alt={title} className="card-product__img" />
       </div>
 
       {/* Блок з текстовою інформацією про продукт */}

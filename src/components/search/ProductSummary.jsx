@@ -1,6 +1,3 @@
-export const ProductSummary = ({ count }) => (
-    <h3 className="catalog__products-summ">
-      Знайдено товарів: {count}
-    </h3>
-  );
-  
+export const ProductSummary = ({ count }) => {
+  return <h3 className="catalog__products-summ">Знайдено товарів: {count}</h3>;
+};

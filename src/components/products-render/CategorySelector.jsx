@@ -1,4 +1,5 @@
-export const CategorySelector = ({ categories, selectedCategory, onSelectCategory }) => (
+export const CategorySelector = ({ categories, selectedCategory, onSelectCategory }) => {
+  return (
     <div className="catalog__select-category dropdown">
       <h3 className="dropdown-btn">Вибрати категорію</h3>
       <div className="dropdown-content" id="category-list">
@@ -17,4 +18,5 @@ export const CategorySelector = ({ categories, selectedCategory, onSelectCategor
         ))}
       </div>
     </div>
-  );
+    );
+}

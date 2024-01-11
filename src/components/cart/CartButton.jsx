@@ -1,4 +1,4 @@
-export default function CartButton({ cartCount, toggleCart }) {
+export const CartButton = ({ cartCount, toggleCart }) => {
 
     return (
         <button className="cart-added-list__btn" onClick={toggleCart}>
@@ -6,4 +6,4 @@ export default function CartButton({ cartCount, toggleCart }) {
             <svg className="icon icon-cart-bag"><use href="#icon-cart-bag"></use></svg>
         </button>
     );
-}
+};

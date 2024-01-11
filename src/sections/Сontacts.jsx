@@ -5,7 +5,7 @@ export const Contacts = () => {
         <h2 className="article__title">Контакти</h2>
 
         <div className="page-content">
-        <p>
+          <p>
             Якщо вам потрібна допомога або у вас є запитання, будь ласка,
             зв&apos;яжіться з нами за наступними контактами:
           </p>

@@ -1,7 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { cleanCart } from '../store/CartSlice';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { cleanCart } from '../../store/CartSlice';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { FormField } from './FormField';
+import { SubmitButton } from './SubmitButton';
+import { EmptyCartMessage } from './EmptyCartMessage';
+
 
 export default function Order() {
   const dispatch = useDispatch();
@@ -9,13 +13,12 @@ export default function Order() {
   const cartCount = cart.length;
 
   // Схема валідації для Yup
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Обов'язкове поле"),
-  email: Yup.string().email("Некоректна електронна пошта").required("Обов'язкове поле"),
-  address: Yup.string().required("Обов'язкове поле"),      
-});
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Обов'язкове поле"),
+    email: Yup.string().email("Некоректна електронна пошта").required("Обов'язкове поле"),
+    address: Yup.string().required("Обов'язкове поле"),
+  });
 
-  
   // Ініціалізація стану форми
   const initialValues = {
     name: "",
@@ -23,6 +26,7 @@ const validationSchema = Yup.object().shape({
     address: "",
   };
 
+  // Функція для обробки події відправки форми
   const handleSubmit = (values, { setSubmitting }) => {
     const orderProducts = cart.map(item => `${item.title} (${item.count})`).join(', ');
 
@@ -52,46 +56,30 @@ const validationSchema = Yup.object().shape({
     });
   };
 
+  // Формуємо props для Formik
+  const formikProps = {
+    initialValues,
+    validationSchema,
+    onSubmit: handleSubmit,
+  };
+
   return (
     <div className="article">
       <div className="container">
         <h2 className="article__title">Оформити замовлення</h2>
         <div className="page-content">
           {cartCount > 0 ? (
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={handleSubmit}
-            >
+            <Formik {...formikProps}>
               {({ isSubmitting }) => (
                 <Form id="order-form">
-                  <div className="form-group">
-                    <label htmlFor="name">Імя:</label>
-                    <Field name="name" type="text" className="form-control" />
-                    <ErrorMessage name="name" component="div" className="error-message" />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="email">Електронна пошта:</label>
-                    <Field name="email" type="email" className="form-control" />
-                    <ErrorMessage name="email" component="div" className="error-message" />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="address">Адреса доставки:</label>
-                    <Field name="address" type="text" className="form-control" />
-                    <ErrorMessage name="address" component="div" className="error-message" />
-                  </div>
-
-                  <button type="submit" className="btn" disabled={isSubmitting}>
-                    Оформити замовлення
-                  </button>
+                  <FormField name="name" label="Ім'я" type="text" />
+                  <FormField name="email" label="Електронна пошта" type="email" />
+                  <FormField name="address" label="Адреса доставки" type="text" />
+                  <SubmitButton isSubmitting={isSubmitting} />
                 </Form>
               )}
             </Formik>
-          ) : (
-            <h1 className="form-empty">Корзина пуста</h1>
-          )}
+          ) : <EmptyCartMessage />}
         </div>
       </div>
     </div>

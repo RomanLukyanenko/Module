@@ -9,7 +9,7 @@ import { Footer } from './sections/Footer';
 import { Cart }  from './components/cart/Cart';
 import { Icons } from './assets/Icons';
 import './App.css';
-import Order from './sections/Order';
+import Order from './components/order/Order';
 import { AboutUs } from './sections/AboutUs';
 
 export const App = () => {

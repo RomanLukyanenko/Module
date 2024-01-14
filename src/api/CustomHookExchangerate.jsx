@@ -4,7 +4,7 @@ export const useCurrencyRates = () => {
     const [currencyData, setCurrencyData] = useState({ EUR: 1, USD: 1 });
   
     useEffect(() => {
-      fetch("https://v6.exchangerate-api.com/v6/64642e161f19cb31cf210149/latest/UAH")
+      fetch("https://v6.exchangerate-api.com/v6/0f73d0db1739d63dc957fb6e/latest/UAH")
         .then(response => response.json())
         .then(data => {
           const { conversion_rates } = data;

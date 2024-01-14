@@ -32,13 +32,9 @@ const cartSlice = createSlice({
         (item) => item.id === productId,
       );
 
-      // Якщо товар знайдено, зменшити його кількість або видалити з кошика
+      // Якщо товар знайдено, видалити його з кошика
       if (productIndex !== -1) {
-        if (state.cart[productIndex].count > 1) {
-          state.cart[productIndex].count--;
-        } else {
-          state.cart.splice(productIndex, 1);
-        }
+        state.cart.splice(productIndex, 1);
       }
     },
 
@@ -88,4 +84,3 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer; // Експорт редюсера для включення його в основний store
-

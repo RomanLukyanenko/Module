@@ -46,13 +46,10 @@ export const SearchPage = () => {
     } else {
       return products.map(product => (
         <ProductCard
-          key={product.id}
-          title={product.title}
-          price={product.price}
-          oldprice={product.oldprice}
-          img={product.img}
-          formatPrice={(price) => FormatPrice(price)}
-        />
+        key={product.id} // Використання унікального ідентифікатора продукту як ключа
+        {...product} // Передача всіх властивостей продукту в компонент ProductCard
+        formatPrice={FormatPrice} // Передача функції для форматування ціни
+      />
       ));
     }
   };

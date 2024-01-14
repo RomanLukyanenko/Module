@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { ProductCard } from "./ProductCard";
 
-export const ProductList = ({ products, formatPrice }) => {
+const ProductListComponent = ({ products, formatPrice }) => { 
   return (
     // Контейнер для відображення списку продуктів
     <div className="catalog__content" id="catalog-products">
@@ -20,3 +21,5 @@ export const ProductList = ({ products, formatPrice }) => {
     </div>
   );
 };
+
+export const ProductList = memo(ProductListComponent);

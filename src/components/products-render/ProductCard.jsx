@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/CartSlice'; // Імпорт функції додавання товару в кошик зі slice кошика
+import { memo } from 'react';
 
 // Компонент ProductCard для відображення інформації про продукт
-export const ProductCard = ({ title, price, oldprice, img, formatPrice, id }) => {
+const ProductCardComponent = ({ title, price, oldprice, img, formatPrice, id }) => {
   
   const dispatch = useDispatch(); // Використання хука useDispatch для доступу до dispatch функції Redux
 
@@ -38,3 +39,5 @@ export const ProductCard = ({ title, price, oldprice, img, formatPrice, id }) =>
     </div>
   );
 };
+
+export const ProductCard = memo(ProductCardComponent);

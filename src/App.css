@@ -634,6 +634,18 @@ svg {
     max-width: 335px;
 }
 
+.card-product:hover {
+    border-radius: 10%;
+    background: linear-gradient(45deg, #7e9cd6, #0f51eb);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-product:hover :nth-child(2) {
+    color: rgb(89, 253, 0); 
+}
+
+
 .card-product .card-product__img-hold {
     text-align: center;
     min-height: 264px;
@@ -672,7 +684,7 @@ svg {
 
 .card-product .card-product__price {
     font-size: 13px;
-    color: #6C798E;
+    color: #000000;
     font-weight: 500;
 }
 

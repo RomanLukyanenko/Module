@@ -3,7 +3,7 @@ import { apiCatalog, apiSearch } from '../../api/ApiData';
 import { FormatPrice } from '../../util/price/FormatPrice';
 import { SearchInput } from './SearchInput';
 import { ProductSummary } from './ProductSummary';
-import { ProductCard } from '../products-render/ProductCard';
+import { ProductCard } from '../../components/ProductCard';
 import { CurrencySwitcher } from '../../util/price/CurrencySwitcher';
 
 export const SearchPage = () => {

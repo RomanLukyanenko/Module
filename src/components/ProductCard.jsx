@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { memo } from 'react';
-import { PriceConverter } from '../../util/price/PriceConverter';
-import { addToCart } from '../../store/CartSlice';
+import { PriceConverter } from '../util/price/PriceConverter';
+import { addToCart } from '../store/CartSlice';
 
 const ProductCardComponent = ({ title, price, oldprice, img, id }) => {
   const dispatch = useDispatch();

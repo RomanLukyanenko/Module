@@ -1,6 +1,6 @@
-import { NavigationBar } from "../sections/NavigationBar";
-import { Footer } from "../sections/Footer";
-import { Gallary } from "../sections/Gallary";
+import { NavigationBar } from "../pages/NavigationBar";
+import { Footer } from "../pages/Footer";
+import { Gallary } from "../pages/Gallary";
 
 export const Layout = ({ children }) => {
   return (

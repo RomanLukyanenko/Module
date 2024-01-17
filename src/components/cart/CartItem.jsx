@@ -1,34 +1,63 @@
-import { memo } from 'react';
+import { memo } from "react";
+import { useDispatch } from "react-redux";
+import {
+  removeFromCart,
+  increaseItemCount,
+  decreaseItemCount,
+} from "../../store/CartSlice";
+import { PriceConverter } from "../../util/price/PriceConverter";
+import { useSelector } from "react-redux";
 
-export const CartItem = memo(({ product, delCartProduct, setItemCountPlus, setItemCountMinus }) => {
-    const { id, title, img, price, count } = product;
-    
-    return (
-        // Блок для відображення окремого товару в кошику
-        <div className="cart-added-list__item">
-            {/* // Кнопка для видалення товару з кошика */}
-            <button className="cart-added-list__item-btn-delete btn-light" onClick={() => delCartProduct(id)}>
-                {/* // Іконка для кнопки видалення */}
-                <svg className="icon icon-close"><use href="#icon-close"></use></svg>
-            </button>
-            {/* // Зображення товару */}
-            <img src={`/catalog/${img}`} alt="" className="cart-added-list__item-img" />
-            {/* // Контейнер для текстової інформації про товар */}
-            <p className="cart-added-list__item-text-hold">
-                {/* // Назва товару */}
-                <span className="cart-added-list__item-title-link">{title}</span>
-                {/* // Ціна товару */}
-                <span className="cart-added-list__item-meta-list">
-                    <span className="cart-added-list__item-meta">Ціна: {price} грн</span>
-                </span>
-            </p>
-            {/* // Інпут для відображення кількості товару, доступний тільки для читання */}
-            <input type="text" className="cart-added-list__item-count" value={count} readOnly/>
-            {/* // Кнопки для зміни кількості товару в кошику */}
-            <button className="cart-added-list__item-btn-plus btn-light" onClick={() => setItemCountPlus(id)}></button>
-            <button className="cart-added-list__item-btn-minus btn-light" onClick={() => setItemCountMinus(id)}></button>
-        </div>
-    )
+export const CartItem = memo(({ product }) => {
+  const dispatch = useDispatch();
+  const currentCurrency = useSelector(
+    (state) => state.currency.currentCurrency,
+  );
+  const { id, title, img, price, count } = product;
+
+  const handleRemoveFromCart = () => dispatch(removeFromCart({ id }));
+  const handleIncrementItemCount = () => dispatch(increaseItemCount({ id }));
+  const handleDecrementItemCount = () => dispatch(decreaseItemCount({ id }));
+
+  return (
+    <div className="cart-added-list__item">
+      <button
+        className="cart-added-list__item-btn-delete btn-light"
+        onClick={handleRemoveFromCart}
+      >
+        <svg className="icon icon-close">
+          <use href="#icon-close"></use>
+        </svg>
+      </button>
+      <img
+        src={`/catalog/${img}`}
+        alt=""
+        className="cart-added-list__item-img"
+      />
+      <p className="cart-added-list__item-text-hold">
+        <span className="cart-added-list__item-title-link">{title}</span>
+        <span className="cart-added-list__item-meta-list">
+          <span className="cart-added-list__item-meta">
+            <PriceConverter price={price * count} currency={currentCurrency} />
+          </span>
+        </span>
+      </p>
+      <input
+        type="text"
+        className="cart-added-list__item-count"
+        value={count}
+        readOnly
+      />
+      <button
+        className="cart-added-list__item-btn-plus btn-light"
+        onClick={handleIncrementItemCount}
+      ></button>
+      <button
+        className="cart-added-list__item-btn-minus btn-light"
+        onClick={handleDecrementItemCount}
+      ></button>
+    </div>
+  );
 });
 
-CartItem.displayName = 'CartItem'; // Встановлення назви для компонента для зручності відладки
+CartItem.displayName = "CartItem";

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Catalogue } from "./components/products-render/CatalogeSection";
+import { Catalog } from "./components/products-render/CatalogSection";
 import { Contacts } from "./sections/Сontacts";
 import { Delivery } from "./sections/Delivery";
 import { SearchPage } from "./components/search/SearchSection";
@@ -15,7 +15,7 @@ export const App = () => {
     <Router>
       <Layout>
         <Routes>
-          <Route exact path="/" element={<Catalogue />} />
+          <Route exact path="/" element={<Catalog />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/search" element={<SearchPage />} />

@@ -6,7 +6,7 @@ import { ProductList } from './ProductList';
 import { useFetchData } from '../../api/ApiData';
 import { useSelector } from 'react-redux';
 
-export const Catalogue = () => {
+export const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);

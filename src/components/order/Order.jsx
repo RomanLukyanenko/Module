@@ -43,7 +43,7 @@ export const Order = () => {
       body: JSON.stringify({
         to: values.email,
         subject: "Оформлення замовлення",
-        message: `Привіт ${values.name}! Ви замовили наступні товари: ${orderProducts}. Ваша адреса доставки: ${values.address}.`,
+        message: `Привіт ${values.name}! Ви замовили наступні товари: ${orderProducts}шт. Ваша адреса доставки: ${values.address}.`,
       }),
     })
       .then((response) => response.json())

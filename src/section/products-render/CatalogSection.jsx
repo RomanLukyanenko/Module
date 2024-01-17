@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CurrencySwitcher } from '../../util/price/CurrencySwitcher';
 import { CategorySelector } from './CategorySelector';
 import { ProductsSummary } from './ProductsSummary';
-import { ProductList } from './ProductList';
+import { ProductList } from '../../components/ProductList';
 import { useFetchData } from '../../api/ApiData';
 import { useSelector } from 'react-redux';
 

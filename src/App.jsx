@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Catalog } from "./components/products-render/CatalogSection";
-import { Contacts } from "./sections/Сontacts";
-import { Delivery } from "./sections/Delivery";
-import { SearchPage } from "./components/search/SearchSection";
+import { Catalog } from "./section/products-render/CatalogSection";
+import { Contacts } from "./pages/Сontacts";
+import { Delivery } from "./pages/Delivery";
+import { SearchPage } from "./section/search/SearchSection";
 import "./App.css";
-import { Order } from "./components/order/Order";
-import { AboutUs } from "./sections/AboutUs";
+import { Order } from "./section/order/Order";
+import { AboutUs } from "./pages/AboutUs";
 import { Layout } from "./util/Layout";
 import { Icons } from "./assets/Icons";
-import { Cart } from "./components/cart/Cart";
+import { Cart } from "./section/cart/Cart";
 
 export const App = () => {
   return (

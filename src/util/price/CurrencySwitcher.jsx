@@ -1,30 +1,30 @@
-export const CurrencySwitcher = ({ onCurrencyChange, currentCurrency }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { changeCurrency } from '../../store/CurrencySlice';
+
+export const CurrencySwitcher = () => {
+  const dispatch = useDispatch();
+  const currentCurrency = useSelector((state) => state.currency.currentCurrency);
+
+  const onCurrencyChange = (newCurrency) => {
+    dispatch(changeCurrency(newCurrency));
+  };
+
   return (
-    // Блок для перемикання валют
     <div>
-      {/* // Кнопка для вибору долара США (USD) як поточної валюти */}
       <button
-        className={`currency-switcher-button ${
-          currentCurrency === "USD" ? "selected" : ""
-        }`}
+        className={`currency-switcher-button ${currentCurrency === "USD" ? "selected" : ""}`}
         onClick={() => onCurrencyChange("USD")}
       >
         USD
       </button>
-      {/* // Кнопка для вибору євро (EUR) як поточної валюти */}
       <button
-        className={`currency-switcher-button ${
-          currentCurrency === "EUR" ? "selected" : ""
-        }`}
+        className={`currency-switcher-button ${currentCurrency === "EUR" ? "selected" : ""}`}
         onClick={() => onCurrencyChange("EUR")}
       >
         EUR
       </button>
-      {/* // Кнопка для вибору української гривні (UAH) як поточної валюти */}
       <button
-        className={`currency-switcher-button ${
-          currentCurrency === "UAH" ? "selected" : ""
-        }`}
+        className={`currency-switcher-button ${currentCurrency === "UAH" ? "selected" : ""}`}
         onClick={() => onCurrencyChange("UAH")}
       >
         UAH
@@ -32,3 +32,5 @@ export const CurrencySwitcher = ({ onCurrencyChange, currentCurrency }) => {
     </div>
   );
 };
+
+

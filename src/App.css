@@ -647,6 +647,7 @@ svg {
 
 
 .card-product .card-product__img-hold {
+    padding-top: 5%;
     text-align: center;
     min-height: 264px;
 }

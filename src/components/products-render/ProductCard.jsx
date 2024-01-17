@@ -1,37 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../store/CartSlice'; // Імпорт функції додавання товару в кошик зі slice кошика
+import { useDispatch, useSelector } from 'react-redux';
 import { memo } from 'react';
+import { PriceConverter } from '../../util/price/PriceConverter';
+import { addToCart } from '../../store/CartSlice';
 
-// Компонент ProductCard для відображення інформації про продукт
-const ProductCardComponent = ({ title, price, oldprice, img, formatPrice, id }) => {
-  
-  const dispatch = useDispatch(); // Використання хука useDispatch для доступу до dispatch функції Redux
+const ProductCardComponent = ({ title, price, oldprice, img, id }) => {
+  const dispatch = useDispatch();
+  const currentCurrency = useSelector((state) => state.currency.currentCurrency);
 
-  // Функція обробки натискання на кнопку "Додати до кошика"
   const handleAddToCart = () => {
-    const product = { id, title, price, img }; // Формування об'єкта продукту
-    dispatch(addToCart(product)); // Відправлення дії addToCart з продуктом до Redux store
+    const product = { id, title, price, img };
+    dispatch(addToCart(product));
   };
 
   return (
     <div className="card-product">
-      {/* Блок з зображенням продукту */}
       <div className="card-product__img-hold">
         <img src={`/catalog/${img}`} alt={title} className="card-product__img" />
       </div>
-
-      {/* Блок з текстовою інформацією про продукт */}
       <div className="card-product__text-hold">
-        {/* Посилання на сторінку продукту */}
-        <a href="#" className="card-product__title-link">{title}</a>
-
-        {/* Відображення ціни та старої ціни */}
+      <a href="#" className="card-product__title-link">{title}</a>
         <span className="card-product__price js-currency-num">
-          <span>{formatPrice(price)}</span>
-          <small>{formatPrice(oldprice)}</small>
+          <PriceConverter price={price} currency={currentCurrency} />
+          <small><PriceConverter price={oldprice} currency={currentCurrency} /></small>
         </span>
-
-        {/* Кнопка для додавання продукту до кошика */}
         <button className="card-product__add-to-cart" onClick={handleAddToCart}>
           Додати до кошика
         </button>

@@ -4,6 +4,7 @@ import { FormatPrice } from '../../util/price/FormatPrice';
 import { SearchInput } from './SearchInput';
 import { ProductSummary } from './ProductSummary';
 import { ProductCard } from '../products-render/ProductCard';
+import { CurrencySwitcher } from '../../util/price/CurrencySwitcher';
 
 export const SearchPage = () => {
   // Використання хуків стану для відстеження різних аспектів сторінки пошуку
@@ -58,6 +59,7 @@ export const SearchPage = () => {
   return (
     <div className="catalog" id="catalog">
       <div className="container">
+        <CurrencySwitcher />
         <div className="catalog__header">
           <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <ProductSummary count={products.length} />

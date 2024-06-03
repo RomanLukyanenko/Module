@@ -5,10 +5,6 @@ import { CartNoResult } from "./CartNoResult";
 import { CartItem } from "./CartItem"; 
 import { CartButton } from "./CartButton"; 
 
-import { changeCartVisibility } from "../../store/CartSlice";
-import { CartNoResult } from "./CartNoResult";
-import { CartItem } from "./CartItem";
-import { CartButton } from "./CartButton";
 export const Cart = () => {
   const dispatch = useDispatch();
 

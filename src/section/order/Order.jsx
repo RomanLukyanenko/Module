@@ -11,7 +11,6 @@ export const Order = () => {
   const { cart } = useSelector((state) => state.cart);
   const cartCount = cart.length;
 
-  // Схема валідації для Yup
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Обов'язкове поле"),
     email: Yup.string()
@@ -20,23 +19,18 @@ export const Order = () => {
     address: Yup.string().required("Обов'язкове поле"),
   });
 
-  // Ініціалізація стану форми
   const initialValues = {
     name: "",
     email: "",
     address: "",
   };
-
-  // Функція для обробки події відправки форми
   const handleSubmit = (values, { setSubmitting }) => {
     const orderProducts = cart
       .map((item) => `${item.title} (${item.count})`)
       .join(", ");
 
-    // Тут ваш код для обробки даних форми
     console.log("Форма відправлена з даними:", values, orderProducts);
 
-    // Припустимо, ви відправляєте дані на сервер
     fetch("https://api.inderio.com/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,7 +53,6 @@ export const Order = () => {
       });
   };
 
-  // Формуємо props для Formik
   const formikProps = {
     initialValues,
     validationSchema,

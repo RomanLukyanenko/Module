@@ -636,9 +636,9 @@ svg {
 
 .card-product:hover {
     border-radius: 10%;
-    background: linear-gradient(45deg, #7e9cd6, #0f51eb);
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+    background: linear-gradient(45deg, #f5f5f5, #e0e0e0);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-product:hover :nth-child(2) {
